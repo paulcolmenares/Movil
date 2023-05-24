@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar  class="new-background-color">
+     <!--Boton atras-->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"color="dark" ></ion-back-button>
+    </ion-buttons>
+    <ion-title>adicionar autor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="Enviar()" #form_autor="ngForm" >
+    <label type="number" name="coda" placeholder="Nombre" [(ngModel)]="autor.coda"></label>
+    <ion-item>
+      <ion-label>Nombre: </ion-label>
+      <ion-input type="text" name="nombre" placeholder="Nombre" [(ngModel)]="autor.nombre" required> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>A. Paterno: </ion-label>
+      <ion-input type="text" name="ap" [(ngModel)]="autor.ap"> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>A. Materno: </ion-label>
+      <ion-input type="text" name="am" [(ngModel)]="autor.am"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Genero: </ion-label>
+      <ion-select placeholder="Seleccione Uno" name="genero" [(ngModel)]="autor.genero">
+        <ion-select-option value="M">Masculino </ion-select-option>
+        <ion-select-option value="F">Femenino </ion-select-option>
+      </ion-select>
+    </ion-item>
+ 
+    <ion-label name="estado"  [(ngModel)]="autor.estado" value="0" required> </ion-label>
+
+<ion-button type="submit" [routerLink]="['/autor']" class="card">Guardar</ion-button>
+<ion-button type="reset" class="card">Cancelar</ion-button>
+<button ></button>
+
+  </form>
+</ion-content>

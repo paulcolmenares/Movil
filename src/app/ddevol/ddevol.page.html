@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar  class="new-background-color">
+    
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"color="dark" ></ion-back-button>
+    </ion-buttons>
+    <ion-title>ddevol</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <fieldset>
+    <legend>Asignacion de una Devolucion a un Ejemplar: </legend>
+    <form [formGroup]="ddvol">
+     <ion-item> 
+        <ion-label for=""> MDEVOL</ion-label>
+        <ion-select value="usuario"  placeholder="Seleccione una devolucion" formControlName="dvol"> 
+          <ion-select-option *ngFor="let item of datos" value="{{item._links.self.href}}">{{item.codd}}-{{item.fecha |date:'dd/MM/yyyy'}} </ion-select-option>
+        </ion-select>
+     </ion-item>
+     
+     <ion-item>
+        <ion-label for=""> EJEMPLARES</ion-label>
+        <ion-select value="rol" placeholder="Seleccione un rol" formControlName="ejem" >
+          <ion-select-option *ngFor="let items of listas" value="{{items._links.self.href}}">{{items.codinv}}</ion-select-option>
+        </ion-select>
+         </ion-item>
+        <ion-button class="card" (click)="Agregar()"> Guardar Devoluciones</ion-button> 
+      <ion-button class="card" (click)="Eliminaremos()">Eliminar</ion-button>
+      </form>
+  </fieldset>
+</ion-content>

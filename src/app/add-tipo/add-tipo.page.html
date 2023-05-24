@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+     <!--Boton atras-->
+     <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="dark" ></ion-back-button>
+    </ion-buttons>
+    <ion-title>adicionar tipo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="Enviar()" #form_tipo="ngForm" >
+    <label type="number" name="codtipo" [(ngModel)]="tipo.codtipo"></label>
+    <ion-item>
+      <ion-label>Nombre: </ion-label>
+      <ion-input type="text" name="nombre" placeholder="Nombre" [(ngModel)]="tipo.nombre" required> </ion-input>
+    </ion-item>
+
+    <ion-label name="estado"  [(ngModel)]="tipo.estado" value="0" required> </ion-label>
+    <ion-item>
+      <ion-label>Sw: </ion-label>
+      <ion-input type="number" name="sw" [(ngModel)]="tipo.sw" required > </ion-input>
+    </ion-item>
+
+<ion-button type="submit" [routerLink]="['/tipo']" class="card">Guardar</ion-button>
+<ion-button type="reset" class="card">Cancelar</ion-button>
+<button ></button>
+
+  </form>
+</ion-content>

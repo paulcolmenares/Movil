@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Texto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button class="card">
+      <ion-icon name="add" [routerLink]="['/add-texto']"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+<!--BUSCAR-->
+<ion-toolbar class="new-background-color">
+  <ion-searchbar></ion-searchbar>
+</ion-toolbar>
+<ion-item>
+  <ion-label>Editorial</ion-label>
+  <ion-select placeholder="Select One" name="code" ngModel required>
+    <ion-select-option *ngFor="let item of edi" [value]="item._links.self.href">{{item.nombre}}
+    </ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+  <ion-label>Area</ion-label>
+  <ion-select placeholder="Seleccione Uno" name="coda" ngModel required>
+    <ion-select-option *ngFor="let item of are" [value]="item._links.self.href">{{item.nombre}}
+    </ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+<ion-label> adicionar Autor:</ion-label>
+<ion-button  color="dark" fill="clear"  [routerLink]="['/escriben']" >
+  <ion-icon name="person-add"></ion-icon>
+</ion-button>
+</ion-item>
+<ion-card *ngFor="let item of lista"  class="card">
+
+  <ion-card-header>
+  
+    <ion-card-subtitle color="light">{{item.titulo | uppercase}}</ion-card-subtitle>
+</ion-card-header>
+<ion-card-content >
+  <p>"{{item.resumen }}" </p>
+  <p>Fecha: {{item.fechapub | date}}</p>
+ 
+</ion-card-content>
+
+<ion-item id="botones"> 
+<ion-button color="dark" fill="clear" (click)="editar(item)">
+  <ion-icon  name="pencil"></ion-icon>
+</ion-button>
+
+<ion-button  color="dark" fill="clear" (click)="delete(item)">
+  <ion-icon  name="trash"></ion-icon>
+</ion-button>
+
+<ion-button color="dark" fill="clear" (click)="modificar(item)">
+  <ion-icon  name="sync-circle"></ion-icon>
+  <ion-button  color="dark" fill="clear" (click)="pdf2(item)">
+    <ion-icon name="print"></ion-icon>
+  </ion-button>
+</ion-button>
+</ion-item>
+</ion-card>
+</ion-content>

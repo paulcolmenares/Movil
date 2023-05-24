@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Anulacion-devo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <fieldset>
+    <legend>ANULAR DE DEVOLUCIONES: </legend>
+    <form [formGroup]="ddvol">
+
+
+      <ion-item> 
+        <ion-label for=""> Ejemplares</ion-label>
+        <ion-select  placeholder="Seleccione un ejemplar" formControlName="ejem">
+          <ion-select-option *ngFor="let items of ejem" value="{{items._links.self.href}}">{{items.codinv}}</ion-select-option>
+        </ion-select>
+      </ion-item> 
+
+      <ion-item>
+        <ion-label for=""> MDEVOL</ion-label>
+        <ion-select  placeholder="Seleccione una devolucion" formControlName="dvol">
+          <ion-select-option *ngFor="let item of lista" value="{{item._links.self.href}}">{{item.codd}} </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+        <ion-button class="card" (click)="Eliminaremos()">Anular Devolucion</ion-button>
+  
+    </form>
+  </fieldset>
+
+</ion-content>

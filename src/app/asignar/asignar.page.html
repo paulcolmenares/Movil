@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+     <!--Boton atras-->
+     <ion-buttons slot="start" >
+      <ion-back-button defaultHref="/" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>asignar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <fieldset>
+    <legend>Datos de la Persona:</legend>
+  <form  #form_usuario="ngForm" >
+  
+    <ion-item>
+      <ion-label>CodPersona: </ion-label>
+      <ion-input type="number" name="codper" [(ngModel)]="usu.codper" required> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Nombre: </ion-label>
+      <ion-input type="text" name="nombre" placeholder="Nombre" [(ngModel)]="usu.nombre" required> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Apellido Paterno: </ion-label>
+      <ion-input type="text" name="ap" placeholder="apellido" [(ngModel)]="usu.ap" > </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Apellido Materno: </ion-label>
+      <ion-input type="text" name="am" placeholder="apellido" [(ngModel)]="usu.am" > </ion-input>
+    </ion-item>
+  
+
+    <ion-item>
+      <ion-label>Genero: </ion-label>
+      <ion-select placeholder="Seleccione Uno" name="genero" [(ngModel)]="usu.genero">
+        <ion-select-option value="M">Masculino </ion-select-option>
+        <ion-select-option value="F">Femenino </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-label name="estado"  [(ngModel)]="usu.estado" value="0" required> </ion-label>
+
+    <ion-item>
+      <ion-label>Tipo: </ion-label>
+      <ion-select placeholder="Seleccione Uno" name="tipoper" [(ngModel)]="usu.tipoper" required >
+        <ion-select-option value="A">Administrativo</ion-select-option>
+        <ion-select-option value="P" >Publico</ion-select-option>
+      </ion-select>
+    </ion-item>
+ <!--Foto -->
+    <ion-item>
+      <ion-label>Foto: </ion-label>
+   </ion-item>
+      <ion-input type="hidden" name="foto" ngModel ></ion-input>
+    
+      <ion-item class="row">
+        <ion-item class="img-container cell-2">
+            <ng-container *ngIf="isImageSaved; else elseTemplate">
+                <img [src]="cardImageBase64" width=100px height=100px />
+            </ng-container>
+            <ng-template #elseTemplate>
+                <img src="./../../assets/usuario.png" class="img-responsive">
+            </ng-template>
+        </ion-item>
+    </ion-item>
+  
+  </form>
+</fieldset>
+
+  <div id="asig">   
+    <fieldset>
+      <legend>Asignacion de un Usuario:</legend>
+    <form (ngSubmit)="Enviar()" #form_user="ngForm">
+   
+    
+      <ion-item>
+     <ion-label >Login: </ion-label>
+        <ion-input type="text" name="login" ngModel required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Contraseña: </ion-label>
+    <ion-input type="text" name="passwd" ngModel  required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Estado: </ion-label>
+      <ion-select placeholder="Seleccione Uno" name="estado" ngModel >
+        <ion-select-option value="1">Activo </ion-select-option>
+        <ion-select-option value="0">Anulado </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item> 
+        <ion-label class="cell-sm-2"> Persona:</ion-label>
+        <ion-select name="codper" ngModel>
+          <ion-select-option *ngFor="let item of per" [value]="item._links.self.href">
+            {{item.nombre}}     {{item.ap}}  </ion-select-option>
+        </ion-select>
+    </ion-item>
+      <ion-button type="submit" class="card" >Guardar</ion-button>
+      <ion-button type="reset" class="card" >Cancelar</ion-button>
+    </form>
+  </fieldset>
+  </div>
+  <div id="ci"> 
+    <fieldset>
+      <legend>Asignacion de CI a una persona</legend>
+    <form (ngSubmit)="Enviar1()" #form_dato="ngForm">
+      <ion-item> 
+     <ion-label>CI:</ion-label>
+        <ion-input type="number" name="ci" ngModel required> </ion-input>
+      </ion-item>
+<ion-item>
+        <ion-label> Persona:</ion-label>
+        <ion-select name="codper" ngModel>
+          <ion-select-option *ngFor="let item of per" [value]="item._links.self.href">
+            {{item.nombre}}      {{item.ap}}</ion-select-option>
+        </ion-select>   
+ </ion-item>
+      <ion-button type="submit" class="card"  >Guardar</ion-button>
+      <ion-button type="reset" class="card" >Cancelar</ion-button>
+    </form>
+     </fieldset>
+  </div>
+
+</ion-content>

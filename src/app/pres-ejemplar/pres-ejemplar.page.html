@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Gestion de Prestacion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Prestamo de un Ejemplar:</ion-label>
+    <ion-button  color="dark" fill="clear"  [routerLink]="['/dprestamo']" >
+      <ion-icon name="book-outline"></ion-icon>
+    </ion-button>
+    </ion-item>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button class="card">
+      <ion-icon name="add" [routerLink]="['/add-presejem']"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-card *ngFor="let item of lista">
+  <ion-card-content >
+    <p>Codigo: {{item.codp}}</p>
+    <p>fecha: {{item.fecha | date:'dd/MM/yyyy'}}</p>
+    <p>Fecha Inicio: {{item.fini | date:'dd/MM/yyyy'}}</p>
+    <p>Fecha Fin: {{item.ffin |date:'dd/MM/yyyy' }}</p>
+  
+    <container-element [ngSwitch]="item.tipopres"> Tipo prest:
+      <div *ngSwitchCase="1" >
+     <p id="tip">Domicilio</p>
+      </div>
+      <div *ngSwitchCase="0" >
+      <p id="tip">Sala</p>
+      </div>
+    </container-element>
+
+
+    <container-element [ngSwitch]="item.estado"> Estado:
+      <div *ngSwitchCase="1">
+        <ion-icon name="thumbs-up-outline" id="est"> </ion-icon>
+      </div>
+      <div *ngSwitchCase="0">
+        <ion-icon name="thumbs-down-outline" id="est"></ion-icon>
+      </div>
+    </container-element>
+
+  </ion-card-content>
+  
+  <ion-item id="botones">  
+  <ion-button  color="dark" fill="clear" (click)="delete(item)">
+    <ion-icon  name="trash"></ion-icon>
+  </ion-button>
+ 
+</ion-item>
+    </ion-card>
+  
+</ion-content>

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+      <!--Boton atras-->
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/" color="dark"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Telefono</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <fieldset>
+    <legend>Adicionar Telefonos: </legend>
+
+<form (ngSubmit)="Enviar()" #form_telefono="ngForm">
+  <ion-item> 
+      <ion-label> Persona:</ion-label>
+      <ion-select   name="codper" ngModel required> 
+        <ion-select-option *ngFor="let item of lista" value="{{item._links.self.href}}">
+      
+          {{item.nombre | uppercase}} {{item.ap | uppercase}} </ion-select-option>
+      </ion-select>
+</ion-item>
+<ion-item> 
+       <ion-label for="">Ingrese el Telefono:</ion-label>
+       <ion-input type="number" name="numero" ngModel required > </ion-input>
+</ion-item> 
+      <ion-button  class="card"type="submit"
+          [disabled]="!form_telefono.valid">Guardar</ion-button>
+ 
+      <ion-button type="reset" class="card">Cancelar</ion-button>
+ 
+    </form>
+ 
+
+</fieldset>
+</ion-content>

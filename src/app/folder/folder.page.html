@@ -1,0 +1,39 @@
+<ion-header [translucent]="true" >
+  <ion-toolbar class="card">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="center">Gestion de Bibliotecas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-header collapse="condense" >
+    <ion-toolbar>
+      <ion-subtitle class="center" >Gestion de Bibliotecas</ion-subtitle>
+    </ion-toolbar>
+  </ion-header>
+ <div id="cabecera">
+  <img 
+    src="https://images.vexels.com/media/users/3/144524/raw/fdfe18cc8108550335a9117e297f2fa1-diseno-de-plantilla-de-logotipo-de-biblioteca.jpg"
+  />
+</div>
+<form (ngSubmit)="onSubmit()" [formGroup]="f_user">
+  <ion-item> 
+     <ion-label>Usuario
+       <ion-text color="danger">*</ion-text>
+     </ion-label>
+       
+ <ion-input type="text" formControlName="user" > </ion-input>
+ </ion-item>
+ <ion-item> 
+   <ion-label>Clave
+     <ion-text color="danger">*</ion-text>
+   </ion-label>
+        <ion-input type="password" formControlName="pass" >  </ion-input>
+       </ion-item>
+ 
+       <ion-button   type="submit" [disabled]="f_user.invalid" class="boton"> Ingresar</ion-button>
+   
+   </form>
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+     <!--Boton atras-->
+     <ion-buttons slot="start" >
+      <ion-back-button defaultHref="/" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>dprestamo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <fieldset>
+    <legend>PRESTAMO DE UN EJEMPLAR: </legend>
+    <form [formGroup]="dprestamo">
+
+      <ion-item> 
+        <ion-label for=""> Ejemplares</ion-label>
+        <ion-select value="ejemplar" placeholder="Seleccione un ejemplar" formControlName="ejem">
+          <ion-select-option *ngFor="let items of listas" value="{{items._links.self.href}}">{{ items.codinv}} 
+
+          </ion-select-option>
+        </ion-select>
+     </ion-item>
+<ion-item>
+        <ion-label for=""> Mprestamo</ion-label>
+        <ion-select value="prestamo" placeholder="Seleccione un prestamo" formControlName="pres">
+          <ion-select-option *ngFor="let item of lista" value="{{item._links.self.href}}">{{item.codp}} - {{item.fecha |date :'dd/MM/yyyy'}}
+          </ion-select-option>
+        </ion-select>
+    </ion-item>
+      <ion-button class="card" (click)="Agregar()">Añadir</ion-button>
+   
+      <ion-button class="card" (click)="Eliminaron()">Eliminar</ion-button>
+   
+    </form>
+  </fieldset>
+
+</ion-content>

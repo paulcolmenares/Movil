@@ -1,0 +1,43 @@
+#est{
+    position: absolute;
+    top: 4px;
+    left: 80px;
+   }
+   #botones{
+    position: relative;
+}
+ion-button{
+ font-size: 15px; //Preferred size here
+}
+ion-content{
+    --ion-background-color:#cfead8;
+}
+
+#botones{
+    position: relative;
+}
+ion-button{
+ font-size: 15px; //Preferred size here
+}
+
+.new-background-color{
+    --background: #cfead8;
+}
+.card{
+    --background: #4baa9c;
+}
+
+ion-button{
+    font-size: 11px;
+  }
+  ion-grid {
+    font-size: 14px;
+    }
+    ion-row:first-child {
+      background-color:  #4baa9c;
+      
+    }
+ion-col{
+    position: relative;
+}
+  

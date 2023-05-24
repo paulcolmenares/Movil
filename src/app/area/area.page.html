@@ -1,0 +1,58 @@
+<ion-header >
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Gestion Area</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  fullscreen >
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button class="card">
+      <ion-icon name="add" [routerLink]="['/add-area']" (click)="Accion()"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <!--BUSCAR-->
+<ion-toolbar class="new-background-color">
+  <ion-searchbar class="form-control" placeholder="Buscar.." name="filterPost" [(ngModel)]="filterPost">Filtro: </ion-searchbar>
+</ion-toolbar>
+  <ion-grid > 
+    <ion-row>
+    
+      <ion-col>Nombre</ion-col>
+      <ion-col>Estado</ion-col>
+      <ion-col>M</ion-col>
+      <ion-col>B</ion-col>
+      <ion-col>H</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of lista | filter: filterPost">
+    
+      <ion-col>{{ item.nombre }}</ion-col>
+      <ion-col> <container-element [ngSwitch]="item.estado">
+        <div *ngSwitchCase="1">
+          <ion-icon name="thumbs-up-outline" id="est1"> </ion-icon>
+        </div>
+        <div *ngSwitchCase="0">
+          <ion-icon name="thumbs-down-outline" id="est1"></ion-icon>
+        </div>
+      </container-element></ion-col>
+      <ion-col> 
+        <ion-item >
+        <ion-button color="dark" fill="clear" (click)="editar(item)">
+        <ion-icon  name="pencil"></ion-icon>
+      </ion-button>
+    
+    <ion-button  color="dark" fill="clear" (click)="delete(item)">
+      <ion-icon  name="trash"></ion-icon>
+    </ion-button>
+    
+       <ion-button color="dark" fill="clear" (click)="modificar(item)">
+      <ion-icon  name="sync-circle"></ion-icon>
+     </ion-button>  </ion-item>
+  </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+

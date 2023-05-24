@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+         <!--Boton atras-->
+         <ion-buttons slot="start" >
+          <ion-back-button defaultHref="/" color="dark"></ion-back-button>
+        </ion-buttons>
+    <ion-title>Escriben</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <fieldset>
+    <legend>Asignación Autor a Texto:</legend>
+     <form [formGroup]="escriben">    
+<ion-label> Lista de Autores</ion-label>
+           <ion-item> 
+          <ion-label for=""> AUTORES</ion-label>
+          <ion-select value="autor"  placeholder="Seleccione un autor" formControlName="aut">
+            <ion-select-option *ngFor="let item of lista" value="{{item._links.self.href}}">{{item.nombre}} {{item.ap}}
+
+            </ion-select-option>
+          </ion-select>
+        </ion-item>      
+    <ion-label> Lista de textos</ion-label>
+      
+      <ion-item>  
+        <ion-label for=""> Textos</ion-label>
+        <ion-select value="texto" placeholder="Seleccione un texto" formControlName="te">
+          <ion-select-option *ngFor="let items of listas" value="{{items._links.self.href}}">{{items.titulo}}
+
+          </ion-select-option>
+        </ion-select>
+      </ion-item> 
+    
+      <ion-button class="card" (click)="Agregar()">Añadir</ion-button>
+      <ion-button class="card" (click)="Eliminar()">Eliminar</ion-button>
+  </form>
+  </fieldset>
+
+</ion-content>

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+     <!--Boton atras-->
+     <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Adicionar Nuevo Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="Enviar()" #form_menu="ngForm" >
+    <ion-label type="number" name="codm" placeholder="Nombre" [(ngModel)]="menu.codm"></ion-label>
+    <ion-item>
+      <ion-label>Nombre : </ion-label>
+      <ion-input type="text" name="nombre" placeholder="codigo" [(ngModel)]="menu.nombre" required> </ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Estado: </ion-label>
+      <ion-select placeholder="Seleccione Uno" name="estado" [(ngModel)]="menu.estado" required >
+        <ion-select-option value=1 >Activo</ion-select-option>
+        <ion-select-option value=0 >Anulado </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+<ion-button type="submit" [routerLink]="['/menus']" class="card">Guardar</ion-button>
+<ion-button type="reset" class="card">Cancelar</ion-button>
+<button ></button>
+
+  </form>
+</ion-content>

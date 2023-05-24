@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+     <!--Boton atras-->
+     <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>adicionar texto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="Enviar()" #form_texto="ngForm" >
+    <label type="number" name="codt" placeholder="Nombre" [(ngModel)]="text.codt"></label>
+    <ion-item>
+      <ion-label>Titulo: </ion-label>
+      <ion-input type="text" name="titulo" placeholder="titulo" [(ngModel)]="text.titulo" required> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Isbn: </ion-label>
+      <ion-input type="text" name="isbn" [(ngModel)]="text.isbn"> </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Edicion: </ion-label>
+      <ion-input type="number" name="edicion" [(ngModel)]="text.edicion"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha Publicacion: </ion-label>
+      <ion-input type="date" name="fechapub" [(ngModel)]="text.fechapub"> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Editorial</ion-label>
+      <ion-select placeholder="Select One" name="code" [(ngModel)]="text.code" required>
+        <ion-select-option *ngFor="let item of edi" [value]="item._links.self.href">{{item.nombre}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Area</ion-label>
+      <ion-select placeholder="Seleccione Uno" name="coda" [(ngModel)]="text.coda" required>
+        <ion-select-option *ngFor="let item of are" [value]="item._links.self.href">{{item.nombre}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Resumen: </ion-label>
+      <ion-input type="text" name="resumen" [(ngModel)]="text.resumen"> </ion-input>
+    </ion-item>
+<ion-button type="submit" [routerLink]="['/texto']" class="card">Guardar</ion-button>
+<ion-button type="reset" class="card">Cancelar</ion-button>
+<button ></button>
+
+  </form>
+</ion-content>

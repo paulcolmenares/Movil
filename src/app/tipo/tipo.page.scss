@@ -1,0 +1,30 @@
+#est{
+    position: absolute;
+    top: 4px;
+    left: 80px;
+   }
+#botones{
+    position: relative;
+}
+ion-content{
+    --ion-background-color:#cfead8;
+}
+.new-background-color{
+    --background: #cfead8;
+}
+
+
+ion-button{
+    font-size: 11px;
+  }
+  ion-grid {
+    font-size: 14px;
+    }
+    ion-row:first-child {
+      background-color:  #4baa9c;
+      
+    }
+ion-col{
+    position: relative;
+}
+  

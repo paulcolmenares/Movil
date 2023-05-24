@@ -1,0 +1,70 @@
+<ion-header >
+  <ion-toolbar class="new-background-color">
+      <!--Boton atras-->
+      <ion-buttons slot="start" >
+        <ion-back-button defaultHref="/" color="dark"></ion-back-button>
+      </ion-buttons>
+    <ion-title>adicionar usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="Enviar()" #form_usuario="ngForm" >
+    <ion-label type="number" name="codper" placeholder="Nombre" [(ngModel)]="usu.codper" required > </ion-label>
+    
+
+    <ion-item>
+      <ion-label>Nombre: </ion-label>
+      <ion-input type="text" name="nombre" placeholder="Nombre" [(ngModel)]="usu.nombre" required> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Apellido Paterno: </ion-label>
+      <ion-input type="text" name="ap" placeholder="apellido" [(ngModel)]="usu.ap" > </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Apellido Materno: </ion-label>
+      <ion-input type="text" name="am" placeholder="apellido" [(ngModel)]="usu.am" > </ion-input>
+    </ion-item>
+  
+
+    <ion-item>
+      <ion-label>Genero: </ion-label>
+      <ion-select placeholder="Seleccione Uno" name="genero" [(ngModel)]="usu.genero">
+        <ion-select-option value="M">Masculino </ion-select-option>
+        <ion-select-option value="F">Femenino </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-label name="estado"  [(ngModel)]="usu.estado" value="0" required> </ion-label>
+
+    <ion-item>
+      <ion-label>Tipo: </ion-label>
+      <ion-select placeholder="Seleccione Uno" name="tipoper" [(ngModel)]="usu.tipoper" required >
+        <ion-select-option value="A">Administrativo</ion-select-option>
+        <ion-select-option value="P" >Publico</ion-select-option>
+      </ion-select>
+    </ion-item>
+ <!--Foto -->
+    <ion-item>
+      <ion-label>Foto: </ion-label>
+   </ion-item>
+      <ion-input type="hidden" name="foto" ngModel ></ion-input>
+    
+      <ion-item class="row">
+        <ion-item class="img-container cell-2">
+            <ng-container *ngIf="isImageSaved; else elseTemplate">
+                <img [src]="cardImageBase64" width=100px height=100px />
+            </ng-container>
+            <ng-template #elseTemplate>
+                <img src="./../../assets/usuario.png" class="img-responsive">
+            </ng-template>
+        </ion-item>
+        <input type="file" class="cell-2" (change)="fileChangeEvent($event)" 
+        data-role="file" data-prepend="Seleccione su foto:" data-mode="drop" >
+    </ion-item>
+  
+<ion-button type="submit" [routerLink]="['/usuarios']" class="card">Guardar</ion-button>
+<ion-button type="reset" class="card">Cancelar</ion-button>
+  </form>
+</ion-content>

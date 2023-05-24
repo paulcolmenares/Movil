@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Asignacion Roles a Usuarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+ <fieldset>
+  <legend>Asignación Procesos a Menú:</legend>
+  <form [formGroup]="rol_usu">
+
+    <ion-item> 
+     <ion-label for=""> Usuarios</ion-label>
+     <ion-select value="usuario"  placeholder="Seleccione un Usuario" formControlName="usu">
+      <ion-select-option *ngFor="let item of lista" value="{{item._links.self.href}}">{{item.login}}</ion-select-option>
+    </ion-select>
+    </ion-item>
+
+    <ion-item> 
+      <ion-label for=""> Roles</ion-label>
+      <ion-select value="rol" placeholder="Seleccione un rol" formControlName="rol">
+       <ion-select-option *ngFor="let items of listas" value="{{items._links.self.href}}">{{items.nombre}}</ion-select-option>
+     </ion-select>
+     </ion-item>
+      <ion-button class="card" (click)="Agregar()">Añadir</ion-button>
+      <ion-button class="card" (click)="Eliminar()">Eliminar</ion-button>
+  </form>       
+</fieldset>
+  </ion-content>
+  
+

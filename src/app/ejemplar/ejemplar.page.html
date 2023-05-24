@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Ejemplar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button class="card">
+      <ion-icon name="add" [routerLink]="['/add-ejemplar']"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!--BUSCAR-->
+  <ion-toolbar class="new-background-color">
+    <ion-searchbar></ion-searchbar>
+  </ion-toolbar>
+  
+  <ion-item>
+    <ion-label>Editorial</ion-label>
+    <ion-select placeholder="Select One" name="code" ngModel required>
+      <ion-select-option *ngFor="let item of edi" [value]="item._links.self.href">{{item.nombre}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Area</ion-label>
+    <ion-select placeholder="Seleccione Uno" name="coda" ngModel required>
+      <ion-select-option *ngFor="let item of are" [value]="item._links.self.href">{{item.nombre}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  
+  <ion-card *ngFor="let item of lista" class="card" >
+  <ion-card-content >
+    <p> Codigo: {{item.codinv}} </p>
+    <container-element [ngSwitch]="item.disponible"> Disponible:
+      <div *ngSwitchCase="1">
+        <ion-icon name="checkmark-outline" id="est"></ion-icon>
+      </div>
+      <div *ngSwitchCase="0">
+        <ion-icon name="close-circle-outline" id="est"></ion-icon>
+      </div>
+    </container-element>
+    <br>
+    <container-element [ngSwitch]="item.estado"> Estado:
+      <div *ngSwitchCase="1">
+        <ion-icon name="thumbs-up-outline" id="est1"> </ion-icon>
+      </div>
+      <div *ngSwitchCase="0">
+        <ion-icon name="thumbs-down-outline" id="est1"></ion-icon>
+      </div>
+    </container-element>
+  </ion-card-content>
+  
+  <ion-item id="botones">
+  <ion-button color="dark" fill="clear" (click)="editar(item)">
+    <ion-icon  name="pencil"></ion-icon>
+  </ion-button>
+  
+  <ion-button  color="dark" fill="clear" (click)="delete(item)">
+    <ion-icon  name="trash"></ion-icon>
+  </ion-button>
+ 
+  <ion-button color="dark" fill="clear" (click)="modificar(item)">
+    <ion-icon  name="sync-circle"></ion-icon>
+  </ion-button>
+</ion-item>
+    </ion-card>
+
+</ion-content>

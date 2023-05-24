@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nuevo Prestamo:</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="Enviar()" #form_prestamo="ngForm" >
+ 
+    <ion-item>
+      <ion-label>Fecha: </ion-label>
+      <ion-input type="date" name="fecha" ngModel required> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha Inicio: </ion-label>
+      <ion-input type="date" name="fini" ngModel required> </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha Fin: </ion-label>
+      <ion-input type="date" name="ffin" ngModel required> </ion-input>
+    </ion-item>
+     
+    <ion-item>
+      <ion-label>Tipo Prestamo</ion-label>
+      <ion-select placeholder="Seleccione Uno" name="tipopres" ngModel required>
+        <ion-select-option  value=1 >Domicilio </ion-select-option>
+        <ion-select-option  value=2>Sala</ion-select-option>
+      </ion-select>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label>Estado: </ion-label>
+      <ion-select placeholder="Seleccione Uno" name="estado" ngModel required>
+      <ion-select-option  value=1 >Activo </ion-select-option>
+      <ion-select-option  value=0>Anulado</ion-select-option>
+    </ion-select>
+    </ion-item>
+<!-- 
+    <ion-item>
+      <ion-label>Estudiantes</ion-label>
+      <ion-select placeholder="Select One" name=ci ngModel required>
+        <ion-select-option *ngFor="let item of dat" [value]="getID(item._links.self.href)">{{item.ci}}
+        
+        </ion-select-option>
+      </ion-select>
+    </ion-item>-->
+
+<ion-button type="submit" [routerLink]="['/pres-ejemplar']" class="card">Guardar</ion-button>
+<ion-button type="reset" class="card">Cancelar</ion-button>
+<button ></button>
+
+  </form>
+</ion-content>

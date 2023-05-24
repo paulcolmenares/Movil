@@ -1,0 +1,26 @@
+#est{
+    position: absolute;
+    top: 130px;
+    left: 80px;
+   }
+   #tip{
+    position: absolute;
+    top: 107px;
+    left: 102px;
+   }
+
+#botones{
+    position: relative;
+}
+ion-button{
+ font-size: 17px; 
+}
+ion-content{
+    --ion-background-color:#cfead8;
+}
+.new-background-color{
+    --background: #cfead8;
+}
+.card{
+    --background: #4baa9c;
+}

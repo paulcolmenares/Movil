@@ -1,0 +1,30 @@
+#est1{
+    position: absolute;
+    top: 26px;
+    left: 80px;
+   }
+#botones{
+    position: relative;
+}
+ion-button{
+ font-size: 17px; 
+}
+
+ion-content{
+
+    --ion-background-color:#cfead8;
+  }
+  .new-background-color{
+    --background: #cfead8;
+  }
+  .card{
+    --background: #4baa9c;
+  }
+  
+  $colors: (
+  primary:    #488aff,
+  secondary:  #0eb1b1,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222
+  );

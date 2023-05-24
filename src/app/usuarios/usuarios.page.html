@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start" >
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Usuarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-fab vertical="top" horizontal="end" slot="fixed" class="card" >
+    <ion-fab-button  class="card">
+      <ion-icon   name="add" [routerLink]="['/add-usuario']"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!--BUSCAR-->
+  <ion-toolbar class="new-background-color">
+    <ion-searchbar class="form-control" placeholder="Buscar.." name="filterPost" [(ngModel)]="filterPost">Filtro: </ion-searchbar>
+  </ion-toolbar>
+
+  <ion-item>
+    <ion-label> adicionar Telefono :</ion-label>
+    <ion-button  color="dark" fill="clear"  [routerLink]="['/telefono']" >
+      <ion-icon name="call-outline"></ion-icon>
+    </ion-button>
+    </ion-item>
+    <ion-card *ngFor="let item of lista | filter: filterPost" class="card" >
+
+    <ion-card-header>
+
+      <ion-item class="avatar" id="imagen">
+        <img src="data:image/png;base64,{{item.foto}}" />
+      </ion-item>
+
+      <ion-card-subtitle color="light" > 
+        {{item.ap  | uppercase}} {{item.am | uppercase }} {{item.nombre | uppercase}}</ion-card-subtitle>
+
+      <p > Genero: {{item.genero}}</p>
+
+      <container-element [ngSwitch]="item.estado" color="light">
+         <ion-label color="light">Estado: </ion-label>
+        <div *ngSwitchCase="1">
+          <ion-icon name="thumbs-up-outline" id="est"> </ion-icon>
+        </div>
+        <div *ngSwitchCase="0">
+          <ion-icon name="thumbs-down-outline" id="est"></ion-icon>
+        </div>
+      </container-element>
+
+      <p color="light">Tipo: {{item.tipoper}} </p>
+    
+    </ion-card-header>
+
+    <ion-item id="botones">
+      <ion-button color="dark" fill="clear" (click)="editar(item)">
+        <ion-icon name="pencil"></ion-icon>
+      </ion-button>
+
+      <ion-button color="dark" fill="clear" (click)="delete(item)">
+        <ion-icon name="trash"> </ion-icon>
+      </ion-button>
+      <ion-button color="dark" fill="clear" (click)="modificar(item)">
+        <ion-icon name="sync-circle"></ion-icon>
+      </ion-button>
+      <ion-button color="dark" fill="clear" (click)="pdf2(item)">
+        <ion-icon name="print"></ion-icon>
+      </ion-button>
+
+      <ion-button color="dark" fill="clear" [routerLink]="['/asignar']">
+ <ion-icon   name="ban" ></ion-icon>
+      </ion-button>
+     
+    </ion-item>
+
+  </ion-card>
+   
+</ion-content>

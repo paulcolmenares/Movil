@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+       <!--Boton atras-->
+       <ion-buttons slot="start">
+        <ion-back-button defaultHref="/" color="dark"></ion-back-button>
+      </ion-buttons>
+    <ion-title>adicionar area</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form (ngSubmit)="Enviar()" #form_area="ngForm" >
+
+    <label type="number" name="coda" placeholder="Nombre" [(ngModel)]="area.coda"></label>
+    <ion-item>
+      <ion-label>Nombre: </ion-label>
+      <ion-input type="text" name="nombre" placeholder="Nombre" [(ngModel)]="area.nombre" required> </ion-input>
+    </ion-item>
+
+      <ion-label name="estado"  [(ngModel)]="area.estado" value="0" required> </ion-label>
+ 
+<ion-button type="submit" [routerLink]="['/area']" class="card">Guardar</ion-button>
+<ion-button type="reset" class="card">Cancelar</ion-button>
+<button ></button>
+
+  </form>
+</ion-content>

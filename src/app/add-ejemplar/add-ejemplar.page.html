@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+         <!--Boton atras-->
+         <ion-buttons slot="start">
+          <ion-back-button defaultHref="/" color="dark"></ion-back-button>
+        </ion-buttons>
+    <ion-title>Edicionar Nuevo Ejemplar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="Enviar()" #form_ejemplar="ngForm">
+  
+    <ion-item>
+      <ion-label>Cod Inventario: </ion-label>
+      <ion-input type="number" name="codinv" placeholder="codigo" [(ngModel)]="ejem.codinv" required> </ion-input>
+    </ion-item>
+
+   
+    <ion-item>
+      <ion-label>Disponible: </ion-label>
+      <ion-select type="number" placeholder="Seleccione Uno" name="disponible" [(ngModel)]="ejem.disponible" required >
+        <ion-select-option value="1" >Libre</ion-select-option>
+        <ion-select-option value="0" >Ocupado</ion-select-option>
+      </ion-select> 
+
+    </ion-item>
+    <ion-label name="estado"  [(ngModel)]="ejem.estado" value="0" required> </ion-label>
+
+<ion-button type="submit" [routerLink]="['/ejemplar']" class="card">Guardar</ion-button>
+<ion-button type="reset" class="card">Cancelar</ion-button>
+<button ></button>
+
+  </form>
+</ion-content>
